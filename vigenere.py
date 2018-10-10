@@ -40,17 +40,19 @@ class Code:
         return decoded
 
 
-cle = 'musique'
-msg = "J'adore ecouter FUN-RADIO toute la journee"
-codec = Code(cle)
-coded = codec.encode(msg)
-print('Message codé :')
-print(coded)
-print('Message original :')
-print(codec.decode(coded))
+def main():
+    cle = 'musique'
+    msg = "J'adore ecouter FUN-RADIO toute la journee"
+    codec = Code(cle)
+    coded = codec.encode(msg)
+    print('Message codé :')
+    print(coded)
+    print('Message original :')
+    print(codec.decode(coded))
 
 
-
+if __name__ == '__main__':
+    main()
 
 
 
