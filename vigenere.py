@@ -18,7 +18,7 @@ class Code:
                 self.pass_phrase += ' '
 
 
-    def translated(self, msg, mode=1):
+    def translate(self, msg, mode=1):
         """ Effectue la translation positive (mode = 1) pour le codage
             ou négative (mode = -1) pour le décodage """
         self.set_pass_phrase(msg)
@@ -34,10 +34,10 @@ class Code:
 
 
     def encode(self, msg):
-        return self.translated(msg)
+        return self.translate(msg)
 
     def decode(self, coded):
-        return self.translated(coded, -1)
+        return self.translate(coded, -1)
 
 
 def main():
