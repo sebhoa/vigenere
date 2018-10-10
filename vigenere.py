@@ -18,26 +18,26 @@ class Code:
                 self.pass_phrase += ' '
 
 
-    def encode(self, msg):
+    def translated(self, msg, mode=1):
+        """ Effectue la translation positive (mode = 1) pour le codage
+            ou négative (mode = -1) pour le décodage """
         self.set_pass_phrase(msg)
-        coded = ''
+        coded_or_decoded = ''
         for idc, c in enumerate(msg):
             if c in self.alpha:
                 i = self.alpha.index(c)
-                coded +=  self.alpha[(i + self.alpha.index(self.pass_phrase[idc])) % self.size]
+                j = mode * self.alpha.index(self.pass_phrase[idc])
+                coded_or_decoded +=  self.alpha[(i + j) % self.size]
             else:
-                coded += c
-        return coded
+                coded_or_decoded += c
+        return coded_or_decoded
+
+
+    def encode(self, msg):
+        return self.translated(msg)
 
     def decode(self, coded):
-        decoded = ''
-        for idc, c in enumerate(coded):
-            if c in self.alpha:
-                i = self.alpha.index(c)
-                decoded +=  self.alpha[(i - self.alpha.index(self.pass_phrase[idc])) % self.size]
-            else:
-                decoded += c
-        return decoded
+        return self.translated(coded, -1)
 
 
 def main():
